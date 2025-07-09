@@ -1,0 +1,52 @@
+#Ansible run will begin here - Placeholder
+
+#First, creating all needed projects with needed settings applied.
+
+- name: Create project NMState
+  community.okd.k8s:
+    state: present
+    resource_definition:
+      apiVersion: project.openshift.io/v1
+      kind: Project
+      metadata:
+        name: openshift-nmstate
+
+- name: Create project Metallb
+  community.okd.k8s:
+    state: present
+    resource_definition:
+      apiVersion: project.openshift.io/v1
+      kind: Project
+      metadata:
+        name: metallb-system
+        
+- name: Create project Cert Manager
+  community.okd.k8s:
+    state: present
+    resource_definition:
+      apiVersion: project.openshift.io/v1
+      kind: Project
+      metadata:
+        name: cert-manager-operator
+        labels:
+          pod-security.kubernetes.io/enforce: privileged
+          security.openshift.io/scc.podSecurityLabelSync: "false"
+
+- name: Create project Openstack Operators
+  community.okd.k8s:
+    state: present
+    resource_definition:
+      apiVersion: project.openshift.io/v1
+      kind: Project
+      metadata:
+        name: openstack-operators
+
+- name: Create project Openstack
+  community.okd.k8s:
+    state: present
+    resource_definition:
+      apiVersion: project.openshift.io/v1
+      kind: Project
+      metadata:
+        name: openstack
+
