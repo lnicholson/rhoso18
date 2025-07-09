@@ -1,0 +1,6 @@
+#Execuring Applier templates as a test for the time being
+---
+- name: Install the NMState Operator.
+  kubernetes.core.k8s:
+    state: present
+    src: ~/templates/????
