@@ -1,0 +1,81 @@
+apiVersion: nmstate.io/v1
+kind: NodeNetworkConfigurationPolicy
+metadata:
+  name: {{ nncp_name }}
+spec:
+  desiredState:
+    interfaces:
+    - description: {{ description_dedicated_nic }}
+      ipv4:
+        address:
+          - ip: {{ ip_address_on_dedicated_nic }}
+        prefix-length: 24
+        dhcp: false
+        enabled: true
+      mtu: {{ dedicated_nic_mtu }}
+      name: {{ dedicated_nic_name }}
+      state: up
+      type: ethernet
+    - description: {{ description_internalapi_interface }}
+      ipv4:
+        address:
+        - ip: {{ ip_address_internalapi }}
+          prefix-length: 24
+        enabled: true
+        dhcp: false
+      ipv6:
+        enabled: false
+      name: internalapi
+      state: up
+      type: vlan
+      vlan:
+        base-iface: {{ base_nic }}
+        id: {{ internalapi_vlan }}
+    - description: {{ description_tenant_interface }}
+      ipv4:
+        address:
+          - ip: {{ ip_address_tenant }}
+            prefix-length: 24
+        enabled: true
+        dhcp: false
+      ipv6:
+        enabled: false
+      name: tenant
+      state: up
+      type: vlan
+      vlan:
+        base-iface: {{ base_nic }}
+        id: {{ tenant_vlan }}
+    - description: {{ description_ctlplane_interface }}
+      ipv4:
+        address:
+        - ip: {{ ip_address_ctlplane }}
+          prefix-length: 24
+        enabled: true
+        dhcp: false
+      ipv6:
+        enabled: false
+      name: ctlplane
+      state: up
+      type: vlan
+      vlan:
+        base-iface: {{ base_nic }}
+        id: {{ ctlplane_vlan }}
+    - description: OSP external vlan interface
+      ipv4:
+        address:
+        - ip: {{ ip_address_external }}
+          prefix-length: 24
+        enabled: true
+        dhcp: false
+      ipv6:
+        enabled: false
+      name: external
+      state: up
+      type: vlan
+      vlan:
+        base-iface: {{ base_nic }}
+        id: {{ external_vlan }}
+  nodeSelector:
+    kubernetes.io/hostname: {{ ocp_node1_hostname }}
+    node-role.kubernetes.io/worker: ""
