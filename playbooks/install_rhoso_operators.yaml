@@ -1,0 +1,19 @@
+- name: Install the NMState Operator
+  kubernetes.core.k8s:
+    state: present
+    src: ~/templates/operator_nmstate.yaml
+
+- name: Install the Metallb Operator
+  kubernetes.core.k8s:
+    state: present
+    src: ~/templates/operator_metallb.yaml
+
+- name: Install the Cert Manager Operator Group
+  kubernetes.core.k8s:
+    state: present
+    src: ~/templates/operator_og_certmanager.yaml
+
+- name: Install the Openstack Operator and apply Subscription
+  kubernetes.core.k8s:
+    state: present
+    src: ~/templates/subscription_openstack.yaml
