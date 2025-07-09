@@ -1,0 +1,15 @@
+---
+- name: Subscribe the NMState Operator
+  kubernetes.core.k8s:
+    state: present
+    src: ~/templates/subscription_nmstate.yaml
+
+- name: Subsribe the Metallb Operator
+  kubernetes.core.k8s:
+    state: present
+    src: ~/templates/subscription_metallb.yaml
+
+- name: Install the Cert Manager Operator
+  kubernetes.core.k8s:
+    state: present
+    src: ~/templates/subscription_certmanager.yaml
