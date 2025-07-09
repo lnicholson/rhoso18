@@ -1,0 +1,10 @@
+---
+- name: Configure NMState on the Control Plane
+  kubernetes.core.k8s:
+    state: present
+    src: ~/templates/rhoso_nncp.yaml
+
+- name: Configure Network Attachement Definitions on the Control Plane
+  kubernetes.core.k8s:
+    state: present
+    src: ~/templates/rhoso_net-attach-def.yaml
