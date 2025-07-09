@@ -1,0 +1,4 @@
+---
+collections:
+  - name: community.okd
+    version: 5.0.0
