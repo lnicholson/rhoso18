@@ -8,3 +8,13 @@
   kubernetes.core.k8s:
     state: present
     src: ~/templates/rhoso_net-attach-def.yaml
+
+- name: Configure MetalLB IP address ranges on the Control Plane
+  kubernetes.core.k8s:
+    state: present
+    src: ~/templates/openstack-ipaddresspools.yaml
+    
+- name: Configure L2Advertisements on the Control Plane
+  kubernetes.core.k8s:
+    state: present
+    src: ~/templates/openstack-l2advertisement.yaml
