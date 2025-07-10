@@ -1,0 +1,19 @@
+## This playbook is the start of the installation of RHOSO.  Sanity checks will 
+## need to be implemented for this to have 100% success rate of installation
+
+- hosts: localhost
+  tasks:
+    - ansible.builtin.debug:
+        msg: Deploying RHOSO 18 on Openshift
+
+- name: Creating needed Projects
+  ansible.builtin.import_playbook: rhoso_projects.yaml
+
+- name: Installing all required Operators for RHOSO
+  ansible.builtin.import_playbook: install_rhoso_operators.yaml
+
+- name: Subscribing Installed Operators as needed
+  ansible.builtin.import_playbook: subscribe_operator.yaml
+
+- name: Deploying the RHOSO Control Plane
+  ansible.builtin.import_playbook: controlplane_config.yaml
