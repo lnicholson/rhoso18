@@ -1,0 +1,36 @@
+---
+apiVersion: metallb.io/v1beta1
+kind: IPAddressPool
+metadata:
+  name: internalapi
+  namespace: metallb-system
+spec:
+  addresses:
+    - {{ internalapi_lb_reserve_range }}
+---
+apiVersion: metallb.io/v1beta1
+kind: IPAddressPool
+metadata:
+  namespace: metallb-system
+  name: ctlplane
+spec:
+  addresses:
+    - {{ ctlplane_lb_reserve_range }}
+---
+apiVersion: metallb.io/v1beta1
+kind: IPAddressPool
+metadata:
+  namespace: metallb-system
+  name: storage
+spec:
+  addresses:
+    - {{ storage_lb_reserve_range }}
+---
+apiVersion: metallb.io/v1beta1
+kind: IPAddressPool
+metadata:
+  namespace: metallb-system
+  name: tenant
+spec:
+  addresses:
+    - {{ tenant_lb_reserve_range }}
