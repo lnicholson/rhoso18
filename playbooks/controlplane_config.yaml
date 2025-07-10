@@ -18,3 +18,14 @@
   kubernetes.core.k8s:
     state: present
     src: ~/templates/openstack-l2advertisement.yaml
+
+- name: Configure Services Secrets on the Control Plane
+  kubernetes.core.k8s:
+    state: present
+    src: ~/templates/openstack_service_secret.yaml
+
+- name: Configure Libvirt Secret for Live Migration on the Control Plane
+  kubernetes.core.k8s:
+    state: present
+    src: ~/templates/secret_libvirt.yaml
+
