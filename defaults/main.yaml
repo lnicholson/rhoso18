@@ -1,0 +1,57 @@
+---
+# Default variables file for a quick RHOSO deployment with minimual priority default variables
+
+## Listing all used variables here before organizing them
+ocp_storageclass: odf
+dns_service_vip_ip_on_ctrlplane: 172.17.x.x
+physical_dns_server: 192.168.1.1
+common_internal_api_vip_ip: 172.17.x.x
+cinder_config_secret: Unsure if this is not already defined or not
+rabbitmq_internal_api_vip_ip: 172.17.x.x
+rabbitmq-cell1_internal_api_vip_ip: 172.17.x.x
+internalapi_lb_reserve_range: 172.17.x.x - 172.17.x.x
+ctlplane_lb_reserve_range: 172.17.x.x - 172.17.x.x
+storage_lb_reserve_range: 172.17.x.x - 172.17.x.x
+tenant_lb_reserve_range: 172.17.x.x - 172.17.x.x
+ctlplane_subnet: 172.17.x.x/xx
+ctlplane_subnet_start: 172.17.x.x
+ctlplane_subnet_end: 172.17.x.x
+internalapi_subnet: 172.17.x.x/xx
+internalapi_subnet_start: 172.17.x.x
+internalapi_subnet_end: 172.17.x.x
+storage_subnet: 172.17.x.x/xx
+storage_subnet_start: 172.17.x.x
+storage_subnet_end: 172.17.x.x
+tenant_subnet: 172.17.x.x/xx
+tenant_subnet_start: 172.17.x.x
+tenant_subnet_end: 172.17.x.x
+external_subnet: 172.17.x.x/xx
+external_subnet_start: 172.17.x.x
+external_subnet_end: 172.17.x.x
+
+#rhoso_nncp.yml vars
+nncp_name: xxxxxx
+description_dedicated_nic: eno1
+ip_address_on_dedicated_nic: 172.17.x.x
+dedicated_nic_mtu: 1500
+dedicated_nic_name: eno1
+description_internalapi_interface: internalapi on vlan
+ip_address_internalapi: 172.17.x.x
+base_nic: bond0
+internalapi_vlan: xxxx
+description_tenant_interface: tenant network on vlan
+ip_address_tenant: 172.17.x.x
+tenant_vlan: xxxx
+description_ctlplane_interface: ctlplane on vlan
+ip_address_ctlplane: 172.17.x.x
+ctlplane_vlan: 1500
+ip_address_external: 172.17.x.x
+external_vlan: xxxx
+ocp_node1_hostname: "this is only for unsupported single node control plane"
+
+#secret_libvirt.yaml var
+libvirt_secret: "something"
+
+#subscription_openstack.yaml
+rhoso_operator_version: "version number"
+rhoso_operator_update: "no"
